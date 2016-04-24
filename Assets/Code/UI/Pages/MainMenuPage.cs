@@ -1,5 +1,4 @@
-﻿using Triconomy.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MainMenuPage : UIView
 {
