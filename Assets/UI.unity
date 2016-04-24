@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentView: {fileID: 0}
-  initialView: {fileID: 0}
+  initialView: {fileID: 11487918, guid: 67a640b64a12a3047a89ee27e052e395, type: 2}
   parent: {fileID: 1638564355}
   parentView: {fileID: 0}
 --- !u!114 &1638564352
