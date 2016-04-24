@@ -23,7 +23,12 @@ public class CharacterController : MonoBehaviour
             if (hit.transform != null)
             {
                 targetPosition = hit.point;
+                move();
             }
         }
+    }
+    void move()
+    {
+        transform.position = targetPosition;
     }
 }
