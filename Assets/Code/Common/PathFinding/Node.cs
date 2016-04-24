@@ -14,7 +14,7 @@ public class Node
 	{
 		get
 		{
-			return this.G + this.H;
+			return G + H;
 		}
 	}
 
@@ -93,7 +93,7 @@ public class Node
 
 	public override string ToString()
 	{
-		return string.Format("{0}, {1}: {2}", this.Location.X, this.Location.Y, this.State);
+		return string.Format("{0}, {1}: {2}", Location.X, Location.Y, State);
 	}
 
 	/// <summary>
