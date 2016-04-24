@@ -32,13 +32,9 @@ public class CharacterController : MonoBehaviour
             if (hit.transform != null)
             {
                 targetPosition = hit.point;
-                transform.position = targetPosition;
+                transform.Translate(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y, 0);
             }
         }
-
-    }
-    void moveWithController()
-    {
 
     }
 }
