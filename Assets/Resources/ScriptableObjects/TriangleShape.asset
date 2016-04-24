@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad42581ba79689488a42e176cf97f14, type: 3}
+  m_Name: TriangleShape
+  m_EditorClassIdentifier: 
+  shapeSprite: {fileID: 21300000, guid: 1617dccdd5054324ba007a5a90e0a942, type: 3}
+  shapeColor: {r: 0, g: 0, b: 1, a: 1}
+  shapeName: Blue Triangle
