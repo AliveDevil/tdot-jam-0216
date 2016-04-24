@@ -14,6 +14,8 @@ public class PathFindingAgent : MonoBehaviour
 		{
 			var node = default(Node);
 			if (!nodes.TryGetValue(key, out node))
+
+				// TODO GET TILE FROM CONTROLLER!
 				node = nodes[key] = new Node(key.X, key.Y, false, endNode.Location);
 			return node;
 		}

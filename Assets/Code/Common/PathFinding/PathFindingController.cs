@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class PathFindingController : MonoBehaviour
 {
-	//private Dictionary<Vector2, Node> nodes;
-	[SerializeField]
 	private Transform parent;
+	private Dictionary<Point, Tile> tiles;
 
-	//public Node this[Vector2 v]
-	//{
-	//	get
-	//	{
-	//		var node = default(Node);
-	//		nodes.TryGetValue(v, out node);
-	//		return node;
-	//	}
-	//}
+	public Tile this[Point p]
+	{
+		get
+		{
+			var tile = default(Tile);
+			tiles.TryGetValue(p, out tile);
+			return tile;
+		}
+	}
+
+	public Transform Parent
+	{
+		get
+		{
+			return parent;
+		}
+		set
+		{
+			parent = value;
+		}
+	}
 
 	private IEnumerator FillGrid()
 	{
@@ -24,14 +35,11 @@ public class PathFindingController : MonoBehaviour
 		for (int i = 0; i < childs; i++)
 		{
 			var child = parent.GetChild(i);
-			var position = (Vector2)child.position;
-			var collider = child.GetComponent<Collider2D>();
-			//var node = new Node()
-			//{
-			//	Position = position,
-			//	Traversable = !collider
-			//};
-			//nodes[position] = node;
+			var tile = child.GetComponent<Tile>();
+			if (!tile)
+				continue;
+			var position = ((Vector2)child.position).ToPoint();
+			tiles[position] = tile;
 
 			yield return i;
 		}
@@ -39,7 +47,7 @@ public class PathFindingController : MonoBehaviour
 
 	private void Start()
 	{
-		//nodes = new Dictionary<Vector2, Node>();
+		tiles = new Dictionary<Point, Tile>();
 		StartCoroutine(FillGrid());
 	}
 }

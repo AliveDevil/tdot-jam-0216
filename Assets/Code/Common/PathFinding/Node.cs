@@ -57,7 +57,7 @@ public class Node
 	{
 		get
 		{
-			return this.parentNode;
+			return parentNode;
 		}
 		set
 		{
