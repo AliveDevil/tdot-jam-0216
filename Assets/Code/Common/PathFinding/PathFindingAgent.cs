@@ -110,21 +110,7 @@ public class PathFindingAgent : MonoBehaviour
 
 		return walkableNodes;
 	}
-
-	private void InitializeNodes(bool[,] map)
-	{
-		//this.width = map.GetLength(0);
-		//this.height = map.GetLength(1);
-		//this.nodes = new Node[this.width, this.height];
-		//for (int y = 0; y < this.height; y++)
-		//{
-		//	for (int x = 0; x < this.width; x++)
-		//	{
-		//		this.nodes[x, y] = new Node(x, y, map[x, y], this.searchParameters.EndLocation);
-		//	}
-		//}
-	}
-
+	
 	private bool Search(Node currentNode)
 	{
 		// Set the current node to Closed since it cannot be traversed more than once

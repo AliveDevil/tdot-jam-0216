@@ -62,8 +62,8 @@ public class Node
 		set
 		{
 			// When setting the parent, also calculate the traversal cost from the start node to here (the 'G' value)
-			this.parentNode = value;
-			this.G = this.parentNode.G + GetTraversalCost(this.Location, this.parentNode.Location);
+			parentNode = value;
+			G = parentNode.G + GetTraversalCost(Location, parentNode.Location);
 		}
 	}
 
@@ -84,11 +84,11 @@ public class Node
 	/// <param name="endLocation">The location of the destination node</param>
 	public Node(int x, int y, bool isWalkable, Point endLocation)
 	{
-		this.Location = new Point(x, y);
-		this.State = NodeState.Untested;
-		this.IsWalkable = isWalkable;
-		this.H = GetTraversalCost(this.Location, endLocation);
-		this.G = 0;
+		Location = new Point(x, y);
+		State = NodeState.Untested;
+		IsWalkable = isWalkable;
+		H = GetTraversalCost(Location, endLocation);
+		G = 0;
 	}
 
 	public override string ToString()
