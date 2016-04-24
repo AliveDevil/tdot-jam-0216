@@ -21,6 +21,19 @@ public class PathFindingAgent : MonoBehaviour
 		}
 	}
 
+	private Node this[Point key, Point endLocation]
+	{
+		get
+		{
+			var node = default(Node);
+			if (!nodes.TryGetValue(key, out node))
+
+				// TODO GET TILE FROM CONTROLLER!
+				node = nodes[key] = new Node(key.X, key.Y, false, endLocation);
+			return node;
+		}
+	}
+
 	public PathFindingController Controller
 	{
 		get
@@ -31,8 +44,8 @@ public class PathFindingAgent : MonoBehaviour
 
 	public List<Point> FindPath(Point p)
 	{
-		startNode = this[((Vector2)transform.position).ToPoint()];
-		endNode = this[p];
+		startNode = this[((Vector2)transform.position).ToPoint(), p];
+		endNode = this[p, p];
 
 		// The start node is the first entry in the 'open' list
 		List<Point> path = new List<Point>();
