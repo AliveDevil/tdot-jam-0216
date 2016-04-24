@@ -27,7 +27,7 @@ public class CharacterController : MonoBehaviour
 
     private void moveWithWASD()
     {
-        myRigidBody.MovePosition((Vector2)transform.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        myRigidBody.MovePosition((Vector2)transform.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime);
     }
 
     private void moveWithClick()
