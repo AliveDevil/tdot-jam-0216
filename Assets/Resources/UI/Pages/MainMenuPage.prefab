@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiStack: {fileID: 0}
-  gameView: {fileID: 0}
+  gameView: {fileID: 11479222, guid: 018233315c33bd74fbc362f823e16c1a, type: 2}
   highscoreView: {fileID: 0}
 --- !u!114 &11491132
 MonoBehaviour:

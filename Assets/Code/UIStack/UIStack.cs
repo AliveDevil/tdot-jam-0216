@@ -103,6 +103,15 @@ public class UIStack : MonoBehaviour
 		return instance;
 	}
 
+	public TView ReplaceInstance<TView>(TView view) where TView : UIView
+	{
+		PopInternal();
+		PushInstance(view);
+		ActivateLast();
+		UpdateCurrentView();
+		return view;
+	}
+
 	public TView Set<TView>(TView view) where TView : UIView
 	{
 		Clear();
