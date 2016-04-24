@@ -10,16 +10,18 @@ public class InitializeGamePage : UIView
 	private IEnumerator Start()
 	{
 		var instance = Instantiate(gameView);
+        yield return SceneManager.LoadSceneAsync("Game", LoadSceneMode.Additive);
 		var gameScene = SceneManager.GetSceneByName("Game");
 		SceneManager.SetActiveScene(gameScene);
+        instance.Player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
 
-		// TODO DO STUFF FOR GAMESCENE.
+        // TODO DO STUFF FOR GAMESCENE.
 
-		// TODO LEVEL SCENE
+        // TODO LEVEL SCENE
 
-		// TODO ENABLE STUFF
+        // TODO ENABLE STUFF
 
-		yield return null;
+        yield return null;
 		UIStack.ReplaceInstance(instance);
 	}
 }

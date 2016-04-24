@@ -21,11 +21,21 @@ public class ColorButtonBehaviour : MonoBehaviour
         get { return shapeImage; }
         set { shapeImage = value; }
     }
+    [SerializeField]
+    private Text shapeName;
+
+    public Text ShapeName
+    {
+        get { return shapeName; }
+        set { shapeName = value; }
+    }
+
 
     void Start()
     {
         shapeImage.sprite = scriptableShape.ShapeSprite;
         shapeImage.color = scriptableShape.ShapeColor;
+        shapeName.text = scriptableShape.ShapeName;
 
     }
 }

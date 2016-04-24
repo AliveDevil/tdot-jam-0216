@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: DiamondShape
   m_EditorClassIdentifier: 
   shapeSprite: {fileID: 21300000, guid: 669a959d8c7a89d4baf152d4f9b45dcf, type: 3}
-  shapeColor: {r: 1, g: 1, b: 1, a: 0}
-  shapeName: 
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
+  shapeName: White Diamond

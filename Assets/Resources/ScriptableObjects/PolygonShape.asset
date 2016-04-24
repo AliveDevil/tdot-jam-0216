@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PolygonShape
   m_EditorClassIdentifier: 
   shapeSprite: {fileID: 21300000, guid: 5a32eaf0ad7d49246921bb4f6b2ff818, type: 3}
-  shapeColor: {r: 1, g: 0, b: 0, a: 0}
-  shapeName: 
+  shapeColor: {r: 1, g: 0, b: 0, a: 1}
+  shapeName: Red Polygon

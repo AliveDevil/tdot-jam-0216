@@ -724,7 +724,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
 --- !u!114 &11420128
@@ -787,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableShape: {fileID: 11400000, guid: 4b2e625fe7d55ba429de7ad7ee8edf2d, type: 2}
   shapeImage: {fileID: 11408814}
+  shapeName: {fileID: 11430138}
 --- !u!114 &11426580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableShape: {fileID: 11400000, guid: 397e1f55aa8c2984fb5f0107b5241d45, type: 2}
   shapeImage: {fileID: 11436452}
+  shapeName: {fileID: 11429088}
 --- !u!114 &11432718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1253,7 +1255,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
 --- !u!114 &11449620
@@ -1373,6 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableShape: {fileID: 11400000, guid: 76729d82822375646beccedd57e2f42a, type: 2}
   shapeImage: {fileID: 11409316}
+  shapeName: {fileID: 11404352}
 --- !u!114 &11456684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1386,6 +1389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableShape: {fileID: 11400000, guid: 1241209d2a3aa674990ad36e4e382ce1, type: 2}
   shapeImage: {fileID: 11420216}
+  shapeName: {fileID: 11449620}
 --- !u!114 &11458070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1443,7 +1447,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
 --- !u!114 &11469686
@@ -1759,7 +1763,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
 --- !u!222 &22204970
