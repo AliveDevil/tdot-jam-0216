@@ -11,4 +11,9 @@ public static class VectorExtensions
 	{
 		return new Point(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y));
 	}
+
+	public static Vector2 ToVector(this Point p)
+	{
+		return new Vector2(p.X, p.Y);
+	}
 }

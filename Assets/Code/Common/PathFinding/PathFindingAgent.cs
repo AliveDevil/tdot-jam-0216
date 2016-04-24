@@ -4,8 +4,11 @@ using UnityEngine;
 public class PathFindingAgent : MonoBehaviour
 {
 	private PathFindingController controller;
+	private int currentIndex;
 	private Node endNode;
+	private Rigidbody2D myRigidBody;
 	private Dictionary<Point, Node> nodes;
+	private List<Point> path;
 	private Node startNode;
 
 	public Node this[Point key]
@@ -16,7 +19,7 @@ public class PathFindingAgent : MonoBehaviour
 			if (!nodes.TryGetValue(key, out node))
 
 				// TODO GET TILE FROM CONTROLLER!
-				node = nodes[key] = new Node(key.X, key.Y, false, endNode.Location);
+				node = nodes[key] = new Node(key.X, key.Y, true, endNode.Location);
 			return node;
 		}
 	}
@@ -29,7 +32,7 @@ public class PathFindingAgent : MonoBehaviour
 			if (!nodes.TryGetValue(key, out node))
 
 				// TODO GET TILE FROM CONTROLLER!
-				node = nodes[key] = new Node(key.X, key.Y, false, endLocation);
+				node = nodes[key] = new Node(key.X, key.Y, true, endLocation);
 			return node;
 		}
 	}
@@ -44,7 +47,7 @@ public class PathFindingAgent : MonoBehaviour
 
 	public List<Point> FindPath(Point p)
 	{
-		startNode = this[((Vector2)transform.position).ToPoint(), p];
+		startNode = this[myRigidBody.position.ToPoint(), p];
 		endNode = this[p, p];
 
 		// The start node is the first entry in the 'open' list
@@ -63,8 +66,20 @@ public class PathFindingAgent : MonoBehaviour
 			// Reverse the list so it's in the correct order when returned
 			path.Reverse();
 		}
+		nodes.Clear();
 
 		return path;
+	}
+
+	public void Move(Point p)
+	{
+		currentIndex = 0;
+		path = FindPath(p);
+	}
+
+	public void MovePosition(Vector2 p)
+	{
+		myRigidBody.MovePosition(p);
 	}
 
 	private static IEnumerable<Point> GetAdjacentLocations(Point fromLocation)
@@ -85,7 +100,33 @@ public class PathFindingAgent : MonoBehaviour
 	private void Awake()
 	{
 		nodes = new Dictionary<Point, Node>();
+		myRigidBody = GetComponent<Rigidbody2D>();
 		controller = FindObjectOfType<PathFindingController>();
+	}
+
+	private void FixedUpdate()
+	{
+		if (path == null)
+			return;
+
+		if (currentIndex >= path.Count)
+		{
+			path = null;
+			currentIndex = -1;
+			return;
+		}
+
+		var delta = path[currentIndex].ToVector() - myRigidBody.position;
+		var distance = delta.magnitude;
+		if (distance == 0)
+		{
+			currentIndex++;
+			return;
+		}
+		var direction = delta.normalized;
+		var newPosition = myRigidBody.position + Vector2.ClampMagnitude(direction * 10, Mathf.Min(distance, Time.fixedDeltaTime));
+
+		MovePosition(newPosition);
 	}
 
 	private List<Node> GetAdjacentWalkableNodes(Node fromNode)

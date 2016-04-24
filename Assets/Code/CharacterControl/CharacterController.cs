@@ -1,7 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+	private PathFindingAgent agent;
+	private RaycastHit2D hit;
+	private Rigidbody2D myRigidBody;
+	private Ray ray;
 	private Vector3 targetPosition;
 
 	public Vector3 TargetPosition
@@ -16,11 +22,6 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
-	private Ray ray;
-	private RaycastHit2D hit;
-	private PathFindingAgent agent;
-	private Rigidbody2D myRigidBody;
-
 	private void Awake()
 	{
 		agent = GetComponent<PathFindingAgent>();
@@ -30,14 +31,8 @@ public class CharacterController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		moveWithWASD();
-		moveWithClick();
 	}
-
-	private void moveWithWASD()
-	{
-		myRigidBody.MovePosition((Vector2)transform.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime);
-	}
-
+	
 	private void moveWithClick()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -45,10 +40,18 @@ public class CharacterController : MonoBehaviour
 			hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 			if (hit.transform != null)
 			{
-				agent.FindPath(hit.point.ToPoint());
-				//targetPosition = hit.point;
-				//myRigidBody.MovePosition(new Vector2(targetPosition.x, targetPosition.y));
+				agent.Move(hit.point.ToPoint());
 			}
 		}
+	}
+
+	private void moveWithWASD()
+	{
+		agent.MovePosition(myRigidBody.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime);
+	}
+
+	private void Update()
+	{
+		moveWithClick();
 	}
 }
