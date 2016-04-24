@@ -27,8 +27,11 @@ public class PathFindingAgent : MonoBehaviour
 		}
 	}
 
-	public List<Point> FindPath()
+	public List<Point> FindPath(Point p)
 	{
+		startNode = this[((Vector2)transform.position).ToPoint()];
+		endNode = this[p];
+
 		// The start node is the first entry in the 'open' list
 		List<Point> path = new List<Point>();
 		bool success = Search(startNode);
@@ -110,7 +113,7 @@ public class PathFindingAgent : MonoBehaviour
 
 		return walkableNodes;
 	}
-	
+
 	private bool Search(Node currentNode)
 	{
 		// Set the current node to Closed since it cannot be traversed more than once
