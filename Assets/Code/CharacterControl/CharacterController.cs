@@ -32,7 +32,7 @@ public class CharacterController : MonoBehaviour
 	{
 		moveWithWASD();
 	}
-	
+
 	private void moveWithClick()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -47,7 +47,11 @@ public class CharacterController : MonoBehaviour
 
 	private void moveWithWASD()
 	{
-		agent.MovePosition(myRigidBody.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime);
+		var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		if (input.magnitude > 0)
+		{
+			agent.MovePosition(myRigidBody.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime);
+		}
 	}
 
 	private void Update()

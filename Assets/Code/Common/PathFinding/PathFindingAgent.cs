@@ -79,6 +79,7 @@ public class PathFindingAgent : MonoBehaviour
 
 	public void MovePosition(Vector2 p)
 	{
+		Stop();
 		myRigidBody.MovePosition(p);
 	}
 
@@ -103,7 +104,11 @@ public class PathFindingAgent : MonoBehaviour
 		myRigidBody = GetComponent<Rigidbody2D>();
 		controller = FindObjectOfType<PathFindingController>();
 	}
-
+	public void Stop()
+	{
+		path = null;
+		currentIndex = -1;
+	}
 	private void FixedUpdate()
 	{
 		if (path == null)
@@ -126,7 +131,7 @@ public class PathFindingAgent : MonoBehaviour
 		var direction = delta.normalized;
 		var newPosition = myRigidBody.position + Vector2.ClampMagnitude(direction * 10, Mathf.Min(distance, Time.fixedDeltaTime));
 
-		MovePosition(newPosition);
+		myRigidBody.MovePosition(newPosition);
 	}
 
 	private List<Node> GetAdjacentWalkableNodes(Node fromNode)
