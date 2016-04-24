@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 public class CharacterController : MonoBehaviour
 {
@@ -12,36 +10,36 @@ public class CharacterController : MonoBehaviour
         set { targetPosition = value; }
     }
 
-    Ray ray;
-    RaycastHit2D hit;
-    Rigidbody2D myRigidBody;
+    private Ray ray;
+    private RaycastHit2D hit;
+    private Rigidbody2D myRigidBody;
 
-    void Awake()
+    private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
-        moveWithClick();
         moveWithWASD();
+        moveWithClick();
     }
-    void moveWithWASD()
+
+    private void moveWithWASD()
     {
         myRigidBody.MovePosition((Vector2)transform.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
     }
-    void moveWithClick()
+
+    private void moveWithClick()
     {
         if (Input.GetMouseButtonDown(0))
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
             if (hit.transform != null)
             {
                 targetPosition = hit.point;
-                //myRigidBody.MovePosition(new Vector2(targetPosition.x, targetPosition.y));
-                transform.Translate(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y, 0);
+                myRigidBody.MovePosition(new Vector2(targetPosition.x, targetPosition.y));
             }
         }
     }
-
 }
