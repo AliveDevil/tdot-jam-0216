@@ -14,14 +14,20 @@ public class CharacterController : MonoBehaviour
 
     Ray ray;
     RaycastHit2D hit;
-    void Update()
+    Rigidbody2D myRigidBody;
+
+    void Awake()
+    {
+        myRigidBody = GetComponent<Rigidbody2D>();
+    }
+    void FixedUpdate()
     {
         moveWithClick();
         moveWithWASD();
     }
     void moveWithWASD()
     {
-        transform.Translate(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        myRigidBody.MovePosition((Vector2)transform.position + new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
     }
     void moveWithClick()
     {
@@ -32,9 +38,10 @@ public class CharacterController : MonoBehaviour
             if (hit.transform != null)
             {
                 targetPosition = hit.point;
+                //myRigidBody.MovePosition(new Vector2(targetPosition.x, targetPosition.y));
                 transform.Translate(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y, 0);
             }
         }
-
     }
+
 }
