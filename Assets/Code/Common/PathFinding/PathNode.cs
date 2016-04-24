@@ -9,4 +9,9 @@
 	{
 		get; set;
 	}
+
+	public PathNode Predecessor
+	{
+		get; set;
+	}
 }
