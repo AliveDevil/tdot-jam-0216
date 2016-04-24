@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PathFindingController : MonoBehaviour
 {
+	[SerializeField]
 	private Transform parent;
 	private Dictionary<Point, Tile> tiles;
 
